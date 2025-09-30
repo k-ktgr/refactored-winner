@@ -132,6 +132,7 @@ body {
   -webkit-mask-composite: xor;
           mask-composite: exclude;
   animation: borderPulse 3.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes borderPulse {
