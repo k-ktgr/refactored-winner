@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Canvas Realizer</title>
+    <meta name="description" content="簡易HTML/CSS/JavaScript リアルタイム編集・プレビュー・保存" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E⚙️%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="src/styles.css?v=2" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">Canvas Realizer</div>
+      <div class="actions">
+        <button id="btn-copy" title="結合HTMLをクリップボードにコピー">コピーHTML</button>
+        <button id="btn-save" title="HTMLファイルとして保存">HTML保存</button>
+        <button id="btn-reset" title="エディタと保存内容をリセット">リセット</button>
+        <button id="btn-theme" title="ダーク/ライト切替">テーマ</button>
+      </div>
+    </header>
+
+
+    <main class="app-main">
+      <section class="panes">
+        <div class="editors">
+          <div class="editor">
+            <div class="editor-title">
+              <span>HTML（CSS/JS含むフルHTMLをここに貼り付け）</span>
+              <div class="editor-tools">
+                <button id="btn-editor-paste" title="クリップボードから貼り付け">貼り付け</button>
+                <button id="btn-editor-reset" title="このエディタだけをリセット">リセット</button>
+              </div>
+            </div>
+            <textarea id="editor-html" spellcheck="false" placeholder="<!DOCTYPE html>\n<html lang=&quot;ja&quot;>\n  <head>\n    <meta charset=&quot;utf-8&quot; />\n    <title>Sample</title>\n    <style>/* CSS */</style>\n  </head>\n  <body>\n    <!-- Body -->\n    <script>// JS</script>\n  </body>\n</html>"></textarea>
+          </div>
+        </div>
+
+        <div class="preview" id="preview">
+          <div class="preview-title">
+            <span>プレビュー</span>
+            <div class="preview-tools">
+              <button id="btn-preview-fullscreen" title="プレビューを全画面">全画面</button>
+              <button id="btn-export-png" title="プレビューをPNG保存">PNG保存</button>
+              <button id="btn-export-pdf" title="プレビューをPDF保存">PDF保存</button>
+            </div>
+          </div>
+          <iframe id="preview-frame" sandbox="allow-scripts allow-same-origin allow-modals allow-pointer-lock allow-popups"></iframe>
+          <div id="errors" class="errors" hidden></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>
+        セキュリティのため、プレビューは iframe の sandbox 属性で分離して実行されます。
+        入力はブラウザのローカルストレージに自動保存されます。
+      </small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+  </html>
+
+
